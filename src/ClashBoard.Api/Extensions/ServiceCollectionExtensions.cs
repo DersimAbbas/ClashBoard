@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using ClashBoard.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -9,7 +10,8 @@ public static class ServiceCollectionExtensions
     public static void AddClashBoardServices(this IServiceCollection services, IConfiguration config)
     {
         services.AddDatabase(config);
-        services.AddControllers();
+        services.AddControllers()
+            .AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
         services.AddSwagger();
         services.AddCorsPolicy();
     }
