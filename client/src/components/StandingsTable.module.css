@@ -1,0 +1,180 @@
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.gameLogo {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.leagueName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.statusBadge {
+  margin-left: auto;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+}
+
+.statusActive {
+  background-color: rgba(78, 204, 163, 0.15);
+  color: var(--success);
+}
+
+.statusUpcoming {
+  background-color: rgba(240, 165, 0, 0.15);
+  color: var(--warning);
+}
+
+.statusCompleted {
+  background-color: rgba(160, 160, 176, 0.15);
+  color: var(--text-secondary);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  padding: 0.6rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.table th:not(:first-child) {
+  text-align: center;
+}
+
+.table td {
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border);
+}
+
+.table td:not(:first-child) {
+  text-align: center;
+}
+
+.table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.rank {
+  color: var(--text-secondary);
+  font-weight: 500;
+  width: 2rem;
+}
+
+.playerCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--border);
+}
+
+.gamerTag {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.mainChar {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.points {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.form {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.formPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+.formW {
+  background-color: rgba(78, 204, 163, 0.2);
+  color: var(--success);
+}
+
+.formL {
+  background-color: rgba(233, 69, 96, 0.2);
+  color: var(--accent);
+}
+
+.formD {
+  background-color: rgba(240, 165, 0, 0.2);
+  color: var(--warning);
+}
+
+.hideOnMobile {
+  /* visible by default */
+}
+
+.emptyMessage {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .cardHeader {
+    padding: 0.75rem 1rem;
+  }
+}
