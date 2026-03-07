@@ -1,32 +1,48 @@
+.accentBar {
+  height: 3px;
+  background-color: var(--accent-primary);
+}
+
 .header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: var(--bg-secondary);
+  background-color: var(--mid);
   border-bottom: 1px solid var(--border);
 }
 
 .headerInner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.75rem 1.5rem;
+  gap: 1.5rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: "Barlow Condensed", sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text);
   text-decoration: none;
+  letter-spacing: 0.02em;
 }
 
-.logoAccent {
-  color: var(--accent);
+.logo:hover {
+  color: var(--text);
+}
+
+.logoIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.logoBold {
+  font-weight: 900;
 }
 
 .nav {
@@ -35,19 +51,46 @@
 }
 
 .navLink {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
   text-decoration: none;
   transition: color 0.15s;
 }
 
-.navLink:hover {
-  color: var(--text-primary);
+.navLinkActive {
+  color: var(--accent-secondary);
+}
+
+.navLinkDisabled {
+  composes: navLink;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.seasonBadge {
+  margin-left: auto;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
 }
 
 .main {
-  max-width: 1200px;
-  margin: 0 auto;
+  /* No max-width — pages handle their own layout */
+}
+
+.footer {
+  border-top: 1px solid var(--border);
   padding: 1.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
