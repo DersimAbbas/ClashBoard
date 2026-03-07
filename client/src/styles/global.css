@@ -1,15 +1,35 @@
 :root {
-  --bg-primary: #0f0f1a;
-  --bg-secondary: #1a1a2e;
-  --bg-card: #16213e;
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0b0;
-  --accent: #e94560;
-  --accent-hover: #ff6b81;
-  --success: #4ecca3;
-  --warning: #f0a500;
-  --border: #2a2a4a;
-  --radius: 8px;
+  /* Surfaces */
+  --dark: #0a0a0f;
+  --mid: #111118;
+  --panel: #16161f;
+  --border: #1e1e2e;
+
+  /* Accents */
+  --accent-primary: #006aa7;
+  --accent-secondary: #fecc02;
+
+  /* Text */
+  --text: #e0e0ec;
+  --muted: #666680;
+
+  /* Form results */
+  --form-win: #4caf50;
+  --form-loss: #ef5350;
+
+  /* Sharp panels */
+  --radius: 0;
+
+  /* Legacy aliases — keeps existing CSS modules working */
+  --bg-primary: var(--dark);
+  --bg-secondary: var(--mid);
+  --bg-card: var(--panel);
+  --text-primary: var(--text);
+  --text-secondary: var(--muted);
+  --accent: var(--accent-primary);
+  --accent-hover: #1a85c4;
+  --success: var(--form-win);
+  --warning: var(--accent-secondary);
 }
 
 *,
@@ -21,15 +41,15 @@
 }
 
 body {
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: "Barlow", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--dark);
+  color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
 }
 
 a {
-  color: var(--accent);
+  color: var(--accent-primary);
   text-decoration: none;
 }
 
