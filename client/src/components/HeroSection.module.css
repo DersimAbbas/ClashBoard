@@ -1,0 +1,36 @@
+.hero {
+  background-color: var(--mid);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.seasonLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.seasonLabel::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--accent-secondary);
+}
+
+.title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.1;
+}
