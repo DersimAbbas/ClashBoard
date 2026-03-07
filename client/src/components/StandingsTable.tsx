@@ -50,15 +50,17 @@ function FormIndicator({ form }: { form: string | null }) {
   return (
     <div className={styles.form}>
       {results.map((result, i) => {
-        let pillClass = "";
-        if (result === "W") pillClass = styles.formW;
-        else if (result === "L") pillClass = styles.formL;
-        else if (result === "D") pillClass = styles.formD;
+        let dotClass = "";
+        if (result === "W") dotClass = styles.formW;
+        else if (result === "L") dotClass = styles.formL;
+        else if (result === "D") dotClass = styles.formD;
 
         return (
-          <span key={i} className={`${styles.formPill} ${pillClass}`}>
-            {result}
-          </span>
+          <span
+            key={i}
+            className={`${styles.formDot} ${dotClass}`}
+            title={result}
+          />
         );
       })}
     </div>
@@ -103,7 +105,7 @@ export default function StandingsTable({ league }: StandingsTableProps) {
           </thead>
           <tbody>
             {sorted.map((lp, index) => (
-              <tr key={lp.id}>
+              <tr key={lp.id} className={index < 2 ? styles.top : undefined}>
                 <td className={styles.rank}>{index + 1}</td>
                 <td>
                   <div className={styles.playerCell}>
