@@ -1,0 +1,64 @@
+.panel {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.match:last-child {
+  border-bottom: none;
+}
+
+.matchInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.date {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.players {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.vs {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.badge {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+}
+
+.live {
+  background-color: rgba(239, 83, 80, 0.15);
+  color: #ef5350;
+}
+
+.upcoming {
+  background-color: rgba(0, 106, 167, 0.15);
+  color: var(--accent-primary);
+}
+
+.done {
+  background-color: rgba(102, 102, 128, 0.15);
+  color: var(--muted);
+}
