@@ -1,5 +1,9 @@
 import { useLeagues } from "../hooks/useLeagues";
+import HeroSection from "../components/HeroSection";
+import SectionLabel from "../components/SectionLabel";
 import StandingsTable from "../components/StandingsTable";
+import SchedulePanel from "../components/SchedulePanel";
+import TopPlayersPanel from "../components/TopPlayersPanel";
 import styles from "./Home.module.css";
 
 export default function Home() {
@@ -31,11 +35,29 @@ export default function Home() {
     );
   }
 
+  const allPlayers = leagues.flatMap((l) => l.leaguePlayers);
+
   return (
-    <div className={styles.container}>
-      {leagues.map((league) => (
-        <StandingsTable key={league.id} league={league} />
-      ))}
-    </div>
+    <>
+      <HeroSection seasonLabel="Season 1 — 2026" title="Swedish Esport League" />
+
+      <div className={styles.content}>
+        <div className={styles.grid}>
+          <main className={styles.standings}>
+            <SectionLabel text="Standings" />
+            {leagues.map((league) => (
+              <StandingsTable key={league.id} league={league} />
+            ))}
+          </main>
+
+          <aside className={styles.aside}>
+            <SectionLabel text="Schedule" />
+            <SchedulePanel />
+            <SectionLabel text="Top Players" />
+            <TopPlayersPanel players={allPlayers} />
+          </aside>
+        </div>
+      </div>
+    </>
   );
 }

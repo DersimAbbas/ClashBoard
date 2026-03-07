@@ -1,4 +1,23 @@
-.container {
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.standings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aside {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -11,18 +30,18 @@
   justify-content: center;
   min-height: 40vh;
   gap: 0.5rem;
-  color: var(--text-secondary);
+  color: var(--muted);
 }
 
 .error {
-  color: var(--accent);
+  color: var(--form-loss);
 }
 
 .spinner {
   width: 2rem;
   height: 2rem;
   border: 3px solid var(--border);
-  border-top-color: var(--accent);
+  border-top-color: var(--accent-primary);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -30,5 +49,11 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
