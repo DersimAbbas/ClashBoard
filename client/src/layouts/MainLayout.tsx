@@ -47,7 +47,14 @@ export default function MainLayout() {
             >
               Players
             </NavLink>
-            <span className={styles.navLinkDisabled}>Matches</span>
+            <NavLink
+              to="/matches"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+              }
+            >
+              Matches
+            </NavLink>
           </nav>
 
           <span className={styles.seasonBadge}>Season 1</span>
