@@ -3,64 +3,84 @@
   border: 1px solid var(--border);
 }
 
-.match {
+.matchItem {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
+  gap: 12px;
 }
 
-.match:last-child {
+.matchItem:last-child {
   border-bottom: none;
 }
 
-.matchInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.date {
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.players {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.vs {
-  color: var(--muted);
-  font-weight: 400;
-}
-
-.badge {
+.matchDate {
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.65rem;
+  font-size: 10px;
   font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.5rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.matchTeams {
+  flex: 1;
+}
+
+.matchVs {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.matchInfo {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.matchStatus {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  flex-shrink: 0;
 }
 
 .live {
-  background-color: rgba(239, 83, 80, 0.15);
+  background: rgba(239, 83, 80, 0.15);
   color: #ef5350;
+  border: 1px solid rgba(239, 83, 80, 0.3);
+  animation: pulse 1.5s infinite;
 }
 
 .upcoming {
-  background-color: rgba(0, 106, 167, 0.15);
-  color: var(--accent-primary);
+  background: var(--border);
+  color: var(--muted);
+  border: 1px solid transparent;
 }
 
 .done {
-  background-color: rgba(102, 102, 128, 0.15);
   color: var(--muted);
+  border: 1px solid transparent;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .empty {
