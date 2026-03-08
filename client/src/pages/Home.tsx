@@ -1,4 +1,5 @@
 import { useLeagues } from "../hooks/useLeagues";
+import { useMatches } from "../hooks/useMatches";
 import HeroSection from "../components/HeroSection";
 import SectionLabel from "../components/SectionLabel";
 import StandingsTable from "../components/StandingsTable";
@@ -8,6 +9,7 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   const { data: leagues, isLoading, error } = useLeagues();
+  const { data: matches } = useMatches();
 
   if (isLoading) {
     return (
@@ -52,7 +54,7 @@ export default function Home() {
 
           <aside className={styles.aside}>
             <SectionLabel text="Schedule" />
-            <SchedulePanel />
+            <SchedulePanel matches={matches ?? []} />
             <SectionLabel text="Top Players" />
             <TopPlayersPanel players={allPlayers} />
           </aside>
