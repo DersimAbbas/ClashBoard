@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import styles from "./MainLayout.module.css";
 
 export default function MainLayout() {
@@ -30,13 +30,23 @@ export default function MainLayout() {
           </Link>
 
           <nav className={styles.nav}>
-            <Link
+            <NavLink
               to="/"
-              className={`${styles.navLink} ${styles.navLinkActive}`}
+              end
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+              }
             >
               Standings
-            </Link>
-            <span className={styles.navLinkDisabled}>Players</span>
+            </NavLink>
+            <NavLink
+              to="/players"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+              }
+            >
+              Players
+            </NavLink>
             <span className={styles.navLinkDisabled}>Matches</span>
           </nav>
 
