@@ -9,3 +9,13 @@ export async function fetchLeagues(): Promise<League[]> {
 
   return response.json();
 }
+
+export async function fetchLeague(id: string): Promise<League> {
+  const response = await fetch(`/api/leagues/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch league: ${response.status}`);
+  }
+
+  return response.json();
+}

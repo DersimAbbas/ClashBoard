@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { League, LeaguePlayer, LeagueStatus } from "../types/league";
 import { LeagueStatus as LS } from "../types/league";
 import styles from "./StandingsTable.module.css";
@@ -80,7 +81,9 @@ export default function StandingsTable({ league }: StandingsTableProps) {
             className={styles.gameLogo}
           />
         )}
-        <h2 className={styles.leagueName}>{league.name}</h2>
+        <Link to={`/leagues/${league.id}`} className={styles.leagueName}>
+          {league.name}
+        </Link>
         <span className={`${styles.statusBadge} ${statusClass(league.status)}`}>
           {statusLabel(league.status)}
         </span>
