@@ -120,9 +120,9 @@ export default function StandingsTable({ league }: StandingsTableProps) {
                       />
                     )}
                     <div>
-                      <div className={styles.gamerTag}>
+                      <Link to={`/players/${lp.player.id}`} className={styles.gamerTag}>
                         {lp.player.gamerTag}
-                      </div>
+                      </Link>
                       {lp.player.mainCharacter && (
                         <div className={styles.mainChar}>
                           {lp.player.mainCharacter}

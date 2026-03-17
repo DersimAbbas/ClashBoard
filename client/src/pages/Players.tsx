@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { usePlayers } from "../hooks/usePlayers";
 import HeroSection from "../components/HeroSection";
 import SectionLabel from "../components/SectionLabel";
@@ -69,9 +70,9 @@ export default function Players() {
                           {player.gamerTag.slice(0, 2).toUpperCase()}
                         </div>
                         <div className={styles.playerInfo}>
-                          <span className={styles.gamerTag}>
+                          <Link to={`/players/${player.id}`} className={styles.gamerTag}>
                             {player.gamerTag}
-                          </span>
+                          </Link>
                           {player.realName && (
                             <span className={styles.realName}>
                               {player.realName}

@@ -79,6 +79,11 @@
   font-size: 15px;
   letter-spacing: 0.04em;
   color: #fff;
+  text-decoration: none;
+}
+
+.gamerTag:hover {
+  color: var(--accent-primary);
 }
 
 .realName {

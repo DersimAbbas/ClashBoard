@@ -120,6 +120,11 @@
 .gamerTag {
   font-weight: 600;
   color: var(--text-primary);
+  text-decoration: none;
+}
+
+.gamerTag:hover {
+  color: var(--accent-primary);
 }
 
 .mainChar {

@@ -1,0 +1,191 @@
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background-color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.details {
+  flex: 1;
+}
+
+.realName {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.metaItem {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.metaValue {
+  color: var(--text);
+}
+
+/* League stats table */
+.statsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.statsTable th {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.statsTable td {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.statsTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.statsTable tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.leagueLink {
+  color: var(--accent-primary);
+}
+
+.leagueLink:hover {
+  color: var(--accent-hover);
+}
+
+.points {
+  color: var(--accent-secondary);
+  font-weight: 700;
+}
+
+.form {
+  display: flex;
+  gap: 4px;
+}
+
+.formDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--muted);
+}
+
+.formW {
+  background-color: var(--form-win);
+}
+
+.formL {
+  background-color: var(--form-loss);
+}
+
+.formD {
+  background-color: var(--accent-secondary);
+}
+
+/* Match history */
+.matchList {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.empty {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Loading / error states */
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.error {
+  color: var(--form-loss);
+}
+
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hideOnMobile {
+    display: none;
+  }
+}

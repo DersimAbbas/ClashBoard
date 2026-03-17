@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { LeaguePlayer } from "../types/league";
 import styles from "./TopPlayersPanel.module.css";
 
@@ -25,7 +26,7 @@ export default function TopPlayersPanel({ players }: TopPlayersPanelProps) {
             />
           )}
           <div className={styles.info}>
-            <div className={styles.gamerTag}>{lp.player.gamerTag}</div>
+            <Link to={`/players/${lp.player.id}`} className={styles.gamerTag}>{lp.player.gamerTag}</Link>
             {lp.player.mainCharacter && (
               <div className={styles.character}>{lp.player.mainCharacter}</div>
             )}

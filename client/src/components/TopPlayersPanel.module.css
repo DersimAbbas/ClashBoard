@@ -41,6 +41,11 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text);
+  text-decoration: none;
+}
+
+.gamerTag:hover {
+  color: var(--accent-primary);
 }
 
 .character {

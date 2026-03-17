@@ -9,3 +9,13 @@ export async function fetchPlayers(): Promise<Player[]> {
 
   return response.json();
 }
+
+export async function fetchPlayer(id: string): Promise<Player> {
+  const response = await fetch(`/api/players/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch player: ${response.status}`);
+  }
+
+  return response.json();
+}
