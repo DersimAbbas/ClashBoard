@@ -57,6 +57,9 @@ export default function MainLayout() {
             </NavLink>
           </nav>
 
+          <Link to="/admin" className={styles.seasonBadge}>
+            Admin
+          </Link>
           <span className={styles.seasonBadge}>Season 1</span>
         </div>
       </header>

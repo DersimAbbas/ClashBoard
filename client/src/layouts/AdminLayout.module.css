@@ -1,0 +1,146 @@
+.accentBar {
+  height: 3px;
+  background-color: var(--accent-secondary);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--mid);
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.logo:hover {
+  color: var(--text);
+}
+
+.logoBold {
+  font-weight: 900;
+}
+
+.adminBadge {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  background: var(--accent-secondary);
+  color: var(--dark);
+}
+
+.backLink {
+  margin-left: auto;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.backLink:hover {
+  color: var(--text);
+}
+
+.wrapper {
+  display: flex;
+  min-height: calc(100vh - 52px);
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background-color: var(--mid);
+  border-right: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+.sidebarLabel {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 0.5rem 1rem;
+}
+
+.sidebarLink {
+  display: block;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebarLink:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+}
+
+.sidebarLinkActive {
+  color: var(--accent-secondary);
+  background: rgba(254, 204, 2, 0.05);
+  border-left: 2px solid var(--accent-secondary);
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  max-width: 1000px;
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  .sidebarLabel {
+    display: none;
+  }
+
+  .sidebarLink {
+    white-space: nowrap;
+    padding: 0.75rem 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}

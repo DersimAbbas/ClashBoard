@@ -1,0 +1,51 @@
+.title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.card:hover {
+  border-color: var(--accent-primary);
+}
+
+.cardLabel {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.cardValue {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.cardName {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 0.25rem;
+}

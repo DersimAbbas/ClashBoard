@@ -1,0 +1,218 @@
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.btn {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btnPrimary {
+  composes: btn;
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.btnDanger {
+  composes: btn;
+  background: var(--form-loss);
+  color: #fff;
+}
+
+.btnSecondary {
+  composes: btn;
+  background: var(--border);
+  color: var(--text);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--border);
+}
+
+.table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionLink {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent-primary);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.actionLink:hover {
+  color: var(--accent-hover);
+}
+
+.actionLinkDanger {
+  composes: actionLink;
+  color: var(--form-loss);
+}
+
+.actionLinkDanger:hover {
+  opacity: 0.8;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.input {
+  font-family: "Barlow", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--dark);
+  border: 1px solid var(--border);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: var(--accent-primary);
+}
+
+.select {
+  composes: input;
+  cursor: pointer;
+}
+
+.formActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: var(--form-loss);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.loading {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.statusBadge {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.4rem;
+}
+
+.statusActive {
+  composes: statusBadge;
+  background: rgba(76, 175, 80, 0.15);
+  color: var(--success);
+}
+
+.statusUpcoming {
+  composes: statusBadge;
+  background: rgba(254, 204, 2, 0.15);
+  color: var(--warning);
+}
+
+.statusCompleted {
+  composes: statusBadge;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+}
+
+.statusScheduled {
+  composes: statusBadge;
+  background: rgba(0, 106, 167, 0.15);
+  color: var(--accent-primary);
+}
+
+.statusCancelled {
+  composes: statusBadge;
+  background: rgba(239, 83, 80, 0.15);
+  color: var(--form-loss);
+}
