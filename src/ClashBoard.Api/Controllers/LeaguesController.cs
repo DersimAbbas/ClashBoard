@@ -45,8 +45,8 @@ public class LeaguesController(AppDbContext db) : ControllerBase
             PointsPerWin = request.PointsPerWin,
             PointsPerDraw = request.PointsPerDraw,
             PointsPerLoss = request.PointsPerLoss,
-            StartDate = request.StartDate,
-            EndDate = request.EndDate,
+            StartDate = request.StartDate.HasValue ? DateTime.SpecifyKind(request.StartDate.Value, DateTimeKind.Utc) : null,
+            EndDate = request.EndDate.HasValue ? DateTime.SpecifyKind(request.EndDate.Value, DateTimeKind.Utc) : null,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -75,8 +75,8 @@ public class LeaguesController(AppDbContext db) : ControllerBase
         league.PointsPerWin = request.PointsPerWin;
         league.PointsPerDraw = request.PointsPerDraw;
         league.PointsPerLoss = request.PointsPerLoss;
-        league.StartDate = request.StartDate;
-        league.EndDate = request.EndDate;
+        league.StartDate = request.StartDate.HasValue ? DateTime.SpecifyKind(request.StartDate.Value, DateTimeKind.Utc) : null;
+        league.EndDate = request.EndDate.HasValue ? DateTime.SpecifyKind(request.EndDate.Value, DateTimeKind.Utc) : null;
 
         await db.SaveChangesAsync();
 

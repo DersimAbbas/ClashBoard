@@ -58,7 +58,7 @@ public class MatchesController(AppDbContext db) : ControllerBase
             Player1Character = request.Player1Character,
             Player2Character = request.Player2Character,
             Notes = request.Notes,
-            ScheduledAt = request.ScheduledAt,
+            ScheduledAt = request.ScheduledAt.HasValue ? DateTime.SpecifyKind(request.ScheduledAt.Value, DateTimeKind.Utc) : null,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -92,8 +92,8 @@ public class MatchesController(AppDbContext db) : ControllerBase
         match.Player1Character = request.Player1Character;
         match.Player2Character = request.Player2Character;
         match.Notes = request.Notes;
-        match.ScheduledAt = request.ScheduledAt;
-        match.CompletedAt = request.CompletedAt;
+        match.ScheduledAt = request.ScheduledAt.HasValue ? DateTime.SpecifyKind(request.ScheduledAt.Value, DateTimeKind.Utc) : null;
+        match.CompletedAt = request.CompletedAt.HasValue ? DateTime.SpecifyKind(request.CompletedAt.Value, DateTimeKind.Utc) : null;
 
         await db.SaveChangesAsync();
 

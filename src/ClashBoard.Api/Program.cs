@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 builder.Services.AddClashBoardServices(builder.Configuration);
 
 var app = builder.Build();

@@ -5,6 +5,7 @@ import {
   useCreateLeague,
   useUpdateLeague,
 } from "../../hooks/useLeagues";
+import { useGames } from "../../hooks/useGames";
 import { LeagueStatus } from "../../types/league";
 import styles from "./Admin.module.css";
 
@@ -13,7 +14,8 @@ export default function AdminLeagueForm() {
   const isEdit = Boolean(id);
   const navigate = useNavigate();
 
-  const { data: existing, isLoading } = useLeague(id ?? "");
+  const { data: existing, isLoading: isLeagueLoading } = useLeague(id ?? "");
+  const { data: games, isLoading: isGamesLoading } = useGames();
   const createMutation = useCreateLeague();
   const updateMutation = useUpdateLeague();
 
@@ -70,7 +72,7 @@ export default function AdminLeagueForm() {
     }
   }
 
-  if (isEdit && isLoading) {
+  if ((isEdit && isLeagueLoading) || isGamesLoading) {
     return <div className={styles.loading}>Loading...</div>;
   }
 
@@ -101,14 +103,20 @@ export default function AdminLeagueForm() {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>Game ID *</label>
-          <input
-            className={styles.input}
+          <label className={styles.label}>Game *</label>
+          <select
+            className={styles.select}
             value={gameId}
             onChange={(e) => setGameId(e.target.value)}
             required
-            placeholder="GUID of the game"
-          />
+          >
+            <option value="" disabled>Select a game...</option>
+            {games?.map((game) => (
+              <option key={game.id} value={game.id}>
+                {game.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className={styles.field}>

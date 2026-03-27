@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NORDIC CIRCUIT</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap');
+
+  :root {
+    --gold: #F0C040;
+    --blue: #006AA7;
+    --yellow: #FECC02;
+    --dark: #0A0A0F;
+    --mid: #111118;
+    --panel: #16161F;
+    --border: #1E1E2E;
+    --text: #E0E0EC;
+    --muted: #666680;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--blue);
+    height: 3px;
+    width: 100%;
+  }
+
+  header {
+    background: var(--mid);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    position: relative;
+  }
+
+  .logo-icon svg { width: 100%; height: 100%; }
+
+  .logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .logo-text span {
+    color: var(--yellow);
+  }
+
+  nav {
+    display: flex;
+    gap: 32px;
+  }
+
+  nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav a:hover, nav a.active { color: var(--text); }
+  nav a.active { color: var(--yellow); }
+
+  .week-badge {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--mid);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      linear-gradient(135deg, rgba(0,106,167,0.08) 0%, transparent 60%),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px);
+    pointer-events: none;
+  }
+
+  .hero-left { position: relative; }
+
+  .season-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .season-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--blue);
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--yellow);
+  }
+
+  .hero-right {
+    position: relative;
+    text-align: right;
+  }
+
+  .next-match {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .countdown {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .countdown span { color: var(--yellow); }
+
+  /* MAIN CONTENT */
+  .main {
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* STANDINGS TABLE */
+  .standings-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+
+  .panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .panel-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .panel-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  thead th:not(:first-child):not(:nth-child(2)) { text-align: center; }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr.top { background: rgba(0,106,167,0.08); }
+  tbody tr.top:hover { background: rgba(0,106,167,0.12); }
+
+  td {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  td:not(:first-child):not(:nth-child(2)) {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--muted);
+    width: 36px;
+  }
+
+  tr.top .rank { color: var(--yellow); }
+
+  .team-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .team-avatar {
+    width: 28px;
+    height: 28px;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  tr.top .team-avatar {
+    background: rgba(0,106,167,0.3);
+    color: var(--yellow);
+  }
+
+  .team-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .pts {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff !important;
+  }
+
+  tr.top .pts { color: var(--yellow) !important; }
+
+  .form-dots {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .dot.w { background: #4CAF50; }
+  .dot.l { background: #EF5350; }
+  .dot.d { background: var(--muted); }
+
+  /* RIGHT COLUMN */
+  .right-col { display: flex; flex-direction: column; gap: 24px; }
+
+  /* SCHEDULE */
+  .schedule-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+
+  .match-item {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .match-item:last-child { border-bottom: none; }
+
+  .match-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .match-teams {
+    flex: 1;
+  }
+
+  .match-vs {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+
+  .match-info {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .match-status {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    flex-shrink: 0;
+  }
+
+  .status-live {
+    background: rgba(239,83,80,0.15);
+    color: #EF5350;
+    border: 1px solid rgba(239,83,80,0.3);
+    animation: pulse 1.5s infinite;
+  }
+
+  .status-upcoming {
+    background: var(--border);
+    color: var(--muted);
+    border: 1px solid transparent;
+  }
+
+  .status-done {
+    color: var(--muted);
+    border: 1px solid transparent;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* STATS */
+  .stats-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    gap: 12px;
+  }
+
+  .stat-row:last-child { border-bottom: none; }
+
+  .stat-rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--border);
+    width: 24px;
+  }
+
+  .stat-info { flex: 1; }
+
+  .stat-player {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .stat-team {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--yellow);
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: right;
+    margin-top: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .se-flag {
+    display: inline-flex;
+    gap: 0;
+    height: 14px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .flag-blue { width: 20px; background: var(--blue); }
+  .flag-yellow { width: 3px; background: var(--yellow); }
+  .flag-blue2 { width: 12px; background: var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<header>
+  <div class="logo-group">
+    <div class="logo-icon">
+      <svg viewBox="0 0 36 36" fill="none">
+        <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="#006AA7" stroke-width="1.5"/>
+        <polygon points="18,7 29,13 29,23 18,29 7,23 7,13" fill="#006AA7" opacity="0.2"/>
+        <polygon points="18,12 24,15.5 24,22.5 18,26 12,22.5 12,15.5" fill="#FECC02"/>
+      </svg>
+    </div>
+    <div class="logo-text">NORDIC <span>CIRCUIT</span></div>
+  </div>
+  <nav>
+    <a href="#" class="active">Standings</a>
+    <a href="#">Schedule</a>
+    <a href="#">Players</a>
+    <a href="#">Rules</a>
+  </nav>
+  <div class="week-badge">Säsong 1 · Vecka 7</div>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="season-label">Säsong 2025</div>
+    <h1>VECKOLIGA<br><em>TABELLEN</em></h1>
+  </div>
+  <div class="hero-right">
+    <div class="next-match">Nästa omgång om</div>
+    <div class="countdown" id="countdown">04<span>:</span>18<span>:</span>42</div>
+  </div>
+</div>
+
+<div class="main">
+  <!-- LEFT: STANDINGS -->
+  <div>
+    <div class="section-label">Tabellplacering</div>
+    <div class="standings-panel">
+      <div class="panel-header">
+        <div class="panel-title">Serietabell</div>
+        <div class="panel-sub">Vecka 7 av 18</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Lag</th>
+            <th>S</th>
+            <th>V</th>
+            <th>F</th>
+            <th>+/-</th>
+            <th>Form</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="top">
+            <td class="rank">1</td>
+            <td><div class="team-cell"><div class="team-avatar">NK</div><span class="team-name">Norrstjärna</span></div></td>
+            <td>6</td><td>5</td><td>1</td><td>+12</td>
+            <td><div class="form-dots"><span class="dot w"></span><span class="dot w"></span><span class="dot w"></span><span class="dot l"></span><span class="dot w"></span></div></td>
+            <td class="pts">15</td>
+          </tr>
+          <tr class="top">
+            <td class="rank">2</td>
+            <td><div class="team-cell"><div class="team-avatar">VS</div><span class="team-name">Vargstigen</span></div></td>
+            <td>6</td><td>4</td><td>2</td><td>+7</td>
+            <td><div class="form-dots"><span class="dot w"></span><span class="dot l"></span><span class="dot w"></span><span class="dot w"></span><span class="dot w"></span></div></td>
+            <td class="pts">12</td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td><div class="team-cell"><div class="team-avatar">ÅF</div><span class="team-name">Åderfors</span></div></td>
+            <td>6</td><td>4</td><td>2</td><td>+5</td>
+            <td><div class="form-dots"><span class="dot w"></span><span class="dot w"></span><span class="dot l"></span><span class="dot w"></span><span class="dot l"></span></div></td>
+            <td class="pts">12</td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td><div class="team-cell"><div class="team-avatar">GE</div><span class="team-name">Glaciärekko</span></div></td>
+            <td>6</td><td>3</td><td>3</td><td>+1</td>
+            <td><div class="form-dots"><span class="dot l"></span><span class="dot w"></span><span class="dot w"></span><span class="dot l"></span><span class="dot w"></span></div></td>
+            <td class="pts">9</td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td><div class="team-cell"><div class="team-avatar">KV</div><span class="team-name">Kronvarg</span></div></td>
+            <td>6</td><td>2</td><td>4</td><td>-3</td>
+            <td><div class="form-dots"><span class="dot l"></span><span class="dot l"></span><span class="dot w"></span><span class="dot w"></span><span class="dot l"></span></div></td>
+            <td class="pts">6</td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td><div class="team-cell"><div class="team-avatar">SF</div><span class="team-name">Skärfrost</span></div></td>
+            <td>6</td><td>2</td><td>4</td><td>-5</td>
+            <td><div class="form-dots"><span class="dot w"></span><span class="dot l"></span><span class="dot l"></span><span class="dot l"></span><span class="dot w"></span></div></td>
+            <td class="pts">6</td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td><div class="team-cell"><div class="team-avatar">BJ</div><span class="team-name">Björnjaeger</span></div></td>
+            <td>6</td><td>1</td><td>5</td><td>-8</td>
+            <td><div class="form-dots"><span class="dot l"></span><span class="dot l"></span><span class="dot l"></span><span class="dot w"></span><span class="dot l"></span></div></td>
+            <td class="pts">3</td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td><div class="team-cell"><div class="team-avatar">TR</div><span class="team-name">Tundrarov</span></div></td>
+            <td>6</td><td>1</td><td>5</td><td>-9</td>
+            <td><div class="form-dots"><span class="dot l"></span><span class="dot l"></span><span class="dot w"></span><span class="dot l"></span><span class="dot l"></span></div></td>
+            <td class="pts">3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right-col">
+
+    <!-- SCHEDULE -->
+    <div>
+      <div class="section-label">Schema</div>
+      <div class="schedule-panel">
+        <div class="panel-header">
+          <div class="panel-title">Omgång 7</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date">IGÅ</div>
+          <div class="match-teams">
+            <div class="match-vs">Norrstjärna vs Skärfrost</div>
+            <div class="match-info">3–1 · Avslutad</div>
+          </div>
+          <div class="match-status status-done">3–1</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date">LIVE</div>
+          <div class="match-teams">
+            <div class="match-vs">Vargstigen vs Kronvarg</div>
+            <div class="match-info">Spel 2 av 3</div>
+          </div>
+          <div class="match-status status-live">LIVE</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date">18:00</div>
+          <div class="match-teams">
+            <div class="match-vs">Åderfors vs Tundrarov</div>
+            <div class="match-info">Mån 10 mar</div>
+          </div>
+          <div class="match-status status-upcoming">Snart</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date">20:00</div>
+          <div class="match-teams">
+            <div class="match-vs">Glaciärekko vs Björnjaeger</div>
+            <div class="match-info">Mån 10 mar</div>
+          </div>
+          <div class="match-status status-upcoming">Snart</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP PERFORMERS -->
+    <div>
+      <div class="section-label">Toppspelare</div>
+      <div class="stats-panel">
+        <div class="panel-header">
+          <div class="panel-title">Poängligan</div>
+          <div class="panel-sub">Vecka 7</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-rank">1</div>
+          <div class="stat-info">
+            <div class="stat-player">Eriksson</div>
+            <div class="stat-team">Norrstjärna</div>
+          </div>
+          <div>
+            <div class="stat-value">4.2</div>
+            <div class="stat-label">K/D</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-rank">2</div>
+          <div class="stat-info">
+            <div class="stat-player">Lindqvist</div>
+            <div class="stat-team">Vargstigen</div>
+          </div>
+          <div>
+            <div class="stat-value">3.8</div>
+            <div class="stat-label">K/D</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-rank">3</div>
+          <div class="stat-info">
+            <div class="stat-player">Bergström</div>
+            <div class="stat-team">Glaciärekko</div>
+          </div>
+          <div>
+            <div class="stat-value">3.5</div>
+            <div class="stat-label">K/D</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-rank">4</div>
+          <div class="stat-info">
+            <div class="stat-player">Holmgren</div>
+            <div class="stat-team">Åderfors</div>
+          </div>
+          <div>
+            <div class="stat-value">3.1</div>
+            <div class="stat-label">K/D</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">
+    <span class="se-flag"><span class="flag-blue"></span><span class="flag-yellow"></span><span class="flag-blue2"></span></span>
+    Nordic Circuit · Sverige · Säsong 2025
+  </div>
+  <div class="footer-left">Alla tider CET · Fri deltagning</div>
+</footer>
+
+<script>
+  // Live countdown
+  let total = 4 * 3600 + 18 * 60 + 42;
+  const el = document.getElementById('countdown');
+  setInterval(() => {
+    if (total <= 0) return;
+    total--;
+    const h = String(Math.floor(total / 3600)).padStart(2,'0');
+    const m = String(Math.floor((total % 3600) / 60)).padStart(2,'0');
+    const s = String(total % 60).padStart(2,'0');
+    el.innerHTML = `${h}<span>:</span>${m}<span>:</span>${s}`;
+  }, 1000);
+</script>
+
+</body>
+</html>

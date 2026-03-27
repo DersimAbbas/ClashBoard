@@ -39,6 +39,14 @@ export default function AdminLayout() {
             Leagues
           </NavLink>
           <NavLink
+            to="/admin/games"
+            className={({ isActive }) =>
+              `${styles.sidebarLink} ${isActive ? styles.sidebarLinkActive : ""}`
+            }
+          >
+            Games
+          </NavLink>
+          <NavLink
             to="/admin/players"
             className={({ isActive }) =>
               `${styles.sidebarLink} ${isActive ? styles.sidebarLinkActive : ""}`

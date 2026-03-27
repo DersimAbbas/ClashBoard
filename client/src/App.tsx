@@ -13,6 +13,8 @@ import AdminPlayers from "./pages/admin/AdminPlayers";
 import AdminPlayerForm from "./pages/admin/AdminPlayerForm";
 import AdminMatches from "./pages/admin/AdminMatches";
 import AdminMatchForm from "./pages/admin/AdminMatchForm";
+import AdminGames from "./pages/admin/AdminGames";
+import AdminGameForm from "./pages/admin/AdminGameForm";
 
 export default function App() {
   return (
@@ -35,6 +37,9 @@ export default function App() {
         <Route path="/admin/matches" element={<AdminMatches />} />
         <Route path="/admin/matches/new" element={<AdminMatchForm />} />
         <Route path="/admin/matches/:id/edit" element={<AdminMatchForm />} />
+        <Route path="/admin/games" element={<AdminGames />} />
+        <Route path="/admin/games/new" element={<AdminGameForm />} />
+        <Route path="/admin/games/:id/edit" element={<AdminGameForm />} />
       </Route>
     </Routes>
   );
