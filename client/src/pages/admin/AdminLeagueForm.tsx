@@ -72,7 +72,7 @@ export default function AdminLeagueForm() {
     }
   }
 
-  if ((isEdit && isLeagueLoading) || isGamesLoading) {
+  if (isEdit && isLeagueLoading) {
     return <div className={styles.loading}>Loading...</div>;
   }
 
@@ -109,6 +109,7 @@ export default function AdminLeagueForm() {
             value={gameId}
             onChange={(e) => setGameId(e.target.value)}
             required
+            disabled={isGamesLoading}
           >
             <option value="" disabled>Select a game...</option>
             {games?.map((game) => (
